@@ -1,39 +1,32 @@
-// udemy.com/course/react-redux - section21 - media app. 
+// udemy.com/course/react-redux - section22 - RTK Query.
 // Object contains key:value as folderName:lectureNo_&_Name
-// "345. Component Files",
 let obj = {
-  // "003_-_media": "343_Initial_App_Boilerplate",
-  // "004_-_media": "344._API_Server_Setup",
-  // "006_-_media": "347._Creating_the_Redux_Store_Stop",
-  // "010_-_media": "352._Adding_State_for_Data_Loading",
-  "012_-_media": "354._Steps_for_Adding_a_Thunk",
-  "014_-_media": "356._Wrapping_up_the_Thunk",
-  "015_-_media": "357._Using_Loading_State",
-  "016_-_media": "358._Adding_a_Pause_for_Testing",
-  "017_-_media": "359._Adding_a_Skeleton_Loader",
-  "019_-_media": "361._Rendering_the_List_of_Users",
-  "020_-_media": "362._Creating_New_Users",
-  "023_-_media": "365._Local_Fine-Grained_Loading_State",
-  "024_-_media": "366._More_on_Loading_State",
-  "025_-_media": "367._Handling_Errors_with_User_Creation",
-  "026_-_media": "368._Creating_a_Reusable_Thunk_Hook_Play",
-  "027_-_media": "369._Creating_a_Fetch-Aware_Button_Component",
-  "028_-_media": "370._Better_Skeleton_Display",
-  "029_-_media": "371._A_Thunk_to_Delete_a_User",
-  "030_-_media": "372._Updating_the_Slice_Play",
-  "031_-_media": "373._Refactoring_the_Component",
-  "032_-_media": "374._Deleting_the_User",
-  "033_-_media": "375._Fixing_a_Delete_Error",
-  "036_-_media": "378._Adding_the_ExpandablePanel",
-  "037_-_media": "379._Wrapping_Up_the_ExpandablePanel",
-  "038_-_media": "380._Adding_the_Albums_Listing",
+  "000_-_albums": "381.Skipping_to_this_Section",
+  "003_-_albums": "384.Creating_a_RTK_Query_API",
+  "004_-_albums": "385.Creating_an_Endpoint",
+  "005_-_albums": "386.Using_the_Generated_Hook",
+  "006_-_albums": "387.A_Few_Immediate_Notes",
+  "008_-_albums": "389.Changing_Data_with_Mutations",
+  "013_-_albums": "394.Refetching_with_Tags",
+  "014_-_albums": "395.Fine-Grained_Tag_Validation",
+  "015_-_albums": "396.Styling_Fixups",
+  "016_-_albums": "397.Adding_a_Pause_for_Testing",
+  "018_-_albums": "398.Refactoring_the_List",
+  "019_-_albums": "399.Remove_Implementation",
+  "020_-_albums": "400.Easy_Tag_Invalidation", //21 neglected bcoz nothing changed
+  "022_-_albums": "402.More_Clever_Tag_Implementation",
+  "024_-_albums": "404.Lots_of_Photos_Setup!",
+  "026_-_albums": "406.Creating_the_Photo",
+  "027_-_albums": "407.Showing_the_List_of_Photos",
+  "028_-_albums": "408.Adding_Mouse-Over_Deletes",
+  "029_-_albums": "409.Adding_Automatic_Data_Refetching",
 };
 
 let keys = Object.keys(obj);
 let values = Object.values(obj);
 
 const { execSync } = require("child_process");
-const path = "D:\\Personal_Codes\\React_with_Redux-Stephen_Grider\\RTK_Thunks";
+const path = "D:\\Personal_Codes\\React_with_Redux-Stephen_Grider\\RTK_Query";
 
 for (let i = 0; i < keys.length; i++) {
   // for (let i = 0; i < keys.length - 1; i++) {
@@ -64,7 +57,8 @@ for (let i = 0; i < keys.length; i++) {
     }
     console.log(`Added: ${stdout}`);
   });
-  if (i != 0){
+  // if (i != 0) {
+  if (i >= 0) {
     execSync(command2_p, (error, stdout, stderr) => {
       if (error) {
         console.error(`Error executing PowerShell command: ${error}`);
