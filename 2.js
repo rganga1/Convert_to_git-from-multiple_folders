@@ -1,3 +1,5 @@
+// udemy.com/course/react-redux - section21 - media app. 
+// Object contains key:value as folderName:lectureNo_&_Name
 // "345. Component Files",
 let obj = {
   // "003_-_media": "343_Initial_App_Boilerplate",
