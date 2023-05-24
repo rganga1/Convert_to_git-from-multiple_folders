@@ -26,14 +26,18 @@ let keys = Object.keys(obj);
 let values = Object.values(obj);
 
 const { execSync } = require("child_process");
-const path = "D:\\Personal_Codes\\React_with_Redux-Stephen_Grider\\RTK_Query";
+// const path = "D:\\Personal_Codes\\React_with_Redux-Stephen_Grider\\RTK_Query";
+const path = "C:\\Users\\USER\\Downloads\\12. Let's setup routes\\facebook";
 
-for (let i = 0; i < keys.length; i++) {
+// for (let i = 0; i < keys.length; i++) {
+for (let i = 0; i < 1; i++) {
   // for (let i = 0; i < keys.length - 1; i++) {
   console.log("=====================");
   console.log("i,keys[i]", i, keys[i]);
   console.log("=====================");
-  let command1 = `cd ${path}\\${keys[i]};git add .`;
+  // let command1 = `cd \\"${path}\\${keys[i]}\\";git add .`;
+  // let command1 = `cd \"${path}\";git add .`; //single backslash causes error
+  let command1 = `cd \\"${path}\\";git add .`;
   let commit_message = `${keys[i].slice(0, 3)}_L${values[i]}`;
   let command2 = `cd ${path}\\${keys[i]};git commit -m \"${commit_message}\"`;
   let command3 = `cp -r ${path}\\${keys[i]}\\.git ${path}\\${keys[i + 1]}`;
@@ -58,22 +62,22 @@ for (let i = 0; i < keys.length; i++) {
     console.log(`Added: ${stdout}`);
   });
   // if (i != 0) {
-  if (i >= 0) {
-    execSync(command2_p, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error executing PowerShell command: ${error}`);
-        return;
-      }
-      console.log(`Commit done: ${stdout}`);
-    });
-  }
-  if (i != keys.length - 1) {
-    execSync(command3_p, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Error executing PowerShell command: ${error}`);
-        return;
-      }
-      console.log(`Copy Command done: ${stdout}`);
-    });
-  }
+  // if (i >= 0) {
+  //   execSync(command2_p, (error, stdout, stderr) => {
+  //     if (error) {
+  //       console.error(`Error executing PowerShell command: ${error}`);
+  //       return;
+  //     }
+  //     console.log(`Commit done: ${stdout}`);
+  //   });
+  // }
+  // if (i != keys.length - 1) {
+  //   execSync(command3_p, (error, stdout, stderr) => {
+  //     if (error) {
+  //       console.error(`Error executing PowerShell command: ${error}`);
+  //       return;
+  //     }
+  //     console.log(`Copy Command done: ${stdout}`);
+  //   });
+  // }
 }
