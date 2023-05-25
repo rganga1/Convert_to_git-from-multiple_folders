@@ -1,15 +1,16 @@
-const fs=require('fs')
+//powershell command to remove all whitespaces with "_"
 
-const path = "C:\\Users\\USER\\Downloads\\12. Let's setup routes\\facebook"
+$directoryPath = $PWD.Path
 
-fs.readdir(path, (err, files) => {
-  if (err) {
-    console.error('Error reading directory:', err);
-    return;
-  }
+$folders = Get-ChildItem -Path $directoryPath -Directory
 
-  // List all the files in the directory
-  files.forEach(file => {
-    console.log(file);
-  });
-});
+foreach ($folder in $folders) {
+  $oldFolderPath = $folder.FullName
+  $folderName = Split-Path -Path $folder.FullName -Leaf
+  $newFolderName = $folderName -replace '\s+', '_'
+  $newFolderPath = Join-Path -Path $directoryPath -ChildPath $newFolderName
+
+  Rename-Item -Path $oldFolderPath -NewName $newFolderName -Force
+}
+
+// to copy all folders name to clipboard

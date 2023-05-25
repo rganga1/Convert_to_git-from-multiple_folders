@@ -1,0 +1,85 @@
+For udemy course - Facebook clone with MERN
+
+PowerShell script to remove whitespaces and put "_"
+
+$directoryPath = $PWD.Path
+
+$folders = Get-ChildItem -Path $directoryPath -Directory
+
+foreach ($folder in $folders) {
+  $oldFolderPath = $folder.FullName
+  $folderName = Split-Path -Path $folder.FullName -Leaf
+  $newFolderName = $folderName -replace '\s+', '_'
+  $newFolderPath = Join-Path -Path $directoryPath -ChildPath $newFolderName
+  Rename-Item -Path $oldFolderPath -NewName $newFolderName -Force
+}
+
+♦ Shell script to move "frontend", "backend" to its parent folder
+
+matchingFolders=$(find . -type d -name "facebook")
+
+# Loop through each matching folder
+for folder in $matchingFolders; do
+    # Move the contents of the folder to its parent directory
+    mv "$folder"/* "$folder"/.. && rm -r "$folder"
+done
+
+♦ Shell script to move .gitignore to its parent folder
+
+matchingFiles=$(find . -type f -name ".gitignore")
+lineNumbers=(4 5 6 9 12 15 16 17 18 19 21 22 23)
+insertText="**"
+# Loop through each matching folder
+for file in $matchingFiles; do
+    for lineNumber in "${lineNumbers[@]}"; do
+        sed -i "${lineNumber}s/^/$insertText/" "$file"
+    done
+directory=$(dirname "$file")
+    mv "$file" "$directory"/..
+done
+
+♦ Shell script to git commit and copy
+
+matchingFolders1=$(find . -type d -maxdepth 1)
+readarray -t matchingFolders <<< "$matchingFolders1"
+length=${#matchingFolders[@]}
+
+# Loop through each matching folder, 0th is just .
+for ((index=1; index<length; index++)); do
+  folder=${matchingFolders[$index]}
+    cd $folder
+    git add .
+    currentDirectory=$(basename "$PWD")
+    git commit -m "$currentDirectory"
+    
+   if [ $index -lt $(($length - 1)) ]; then
+    nextFolder=${matchingFolders[$index+1]}
+    cp -r .git ../$nextFolder
+    fi
+    cd ..
+done
+
+#just for testing above script
+matchingFolders1=$(find . -type d -maxdepth 1)
+readarray -t matchingFolders <<< "$matchingFolders1"
+length=${#matchingFolders[@]}
+
+# Loop through each matching folder, 0th is just .
+for ((index=1; index<length; index++)); do
+  folder=${matchingFolders[$index]}
+    echo $folder
+    cd $folder
+    currentDirectory=$(basename "$PWD")
+    #echo "$currentDirectory"
+    
+if [ $index -lt $(($length - 1)) ]; then
+  nextFolder=${matchingFolders[$index+1]}
+  echo $nextFolder
+fi
+  cd ..
+done
+
+
+
+
+

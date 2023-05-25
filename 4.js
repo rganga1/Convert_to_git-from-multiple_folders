@@ -1,64 +1,64 @@
 const { execSync } = require("child_process");
 // const { copyFolder } = require("fs");
-const fs = require('fs-extra');
+// const fs = require("fs-extra");
 const paths = [
-  "14. Environment variables",
-  "16. Let's setup a MongoDb Atlas Account and connect to our application",
-  "18. Working with JSON and explaining HTTP response status codes",
-  "20. Let's setup the User modal",
-  "22. Register and validate data and using Regex to validate email",
-  "23. Username live validation",
-  "24. JSON web tokens",
-  "25. Setup Google OAuth 2.0 to Access Google APIs",
-  "26. Finish register and send emails",
-  "27. Activate email",
-  "28. Login",
-  "29. Let's setup react router dom",
-  "30. React Redux store explained and full setup",
-  "31. Login an Register page part 1",
-  "32. Login and Register page part 2 (Formik)",
-  "33. Login and Register page part 3 (Yup)",
-  "34. Login and Register page part 4 (responsiveness)",
-  "35. Login and Register part 5 Footer",
-  "36. Learn about code refactoring",
-  "37. Register form",
-  "38. Working with dates for birthday",
-  "39. Register form validation",
-  "40. Register form error handling",
-  "41. Finish register error handling and fix errors",
-  "42. Register submit",
-  "43. Login submit",
-  "44. Header base part 1",
-  "45. Header base part 2",
-  "46. Click outside elements and close",
-  "47. Search menu",
-  "48. All Menu",
-  "49. User menu part 1",
-  "50. User menu part 2",
-  "51. Responsive Header",
-  "52. Finish Header and fix issues",
-  "53. Protected routes (very important ! )",
-  "54. Left home menu part 1",
-  "55. Left home menu part 2",
-  "56. Right home side",
-  "57. Let's work on stories",
-  "58. Create post form",
-  "59. Responsive home advanced tricks 1",
-  "60. Responsive home advanced tricks 2",
-  "61. Authentification middlware",
-  "62. Activate account part 1",
-  "63. Activate account part 2",
-  "64. Activate Account and fix asecurity risk",
-  "65. re-Send verification code",
-  "66. Logout",
-  "67. Reset password part 1",
-  "68. Reset password part 2",
-  "69. Reset password part 3",
-  "70. Reset password part 4",
-  "71. Find user",
-  "72. Send reset code email",
-  "73. Validate reset code email",
-  "74. Change password",
+  "14._Environment_variables",
+  "16._Let's_setup_a_MongoDb_Atlas_Account_and_connect_to_our_application",
+  "18._Working_with_JSON_and_explaining_HTTP_response_status_codes",
+  "20._Let's_setup_the_User_modal",
+  "22._Register_and_validate_data_and_using_Regex_to_validate_email",
+  "23._Username_live_validation",
+  "24._JSON_web_tokens",
+  "25._Setup_Google_OAuth_2.0_to_Access_Google_APIs",
+  "26._Finish_register_and_send_emails",
+  "27._Activate_email",
+  "28._Login",
+  "29._Let's_setup_react_router_dom",
+  "30._React_Redux_store_explained_and_full_setup",
+  "31._Login_an_Register_page_part_1",
+  "32._Login_and_Register_page_part_2_(Formik)",
+  "33._Login_and_Register_page_part_3_(Yup)",
+  "34._Login_and_Register_page_part_4_(responsiveness)",
+  "35._Login_and_Register_part_5_Footer",
+  "36._Learn_about_code_refactoring",
+  "37._Register_form",
+  "38._Working_with_dates_for_birthday",
+  "39._Register_form_validation",
+  "40._Register_form_error_handling",
+  "41._Finish_register_error_handling_and_fix_errors",
+  "42._Register_submit",
+  "43._Login_submit",
+  "44._Header_base_part_1",
+  "45._Header_base_part_2",
+  "46._Click_outside_elements_and_close",
+  "47._Search_menu",
+  "48._All_Menu",
+  "49._User_menu_part_1",
+  "50._User_menu_part_2",
+  "51._Responsive_Header",
+  "52._Finish_Header_and_fix_issues",
+  "53._Protected_routes_(very_important_!_)",
+  "54._Left_home_menu_part_1",
+  "55._Left_home_menu_part_2",
+  "56._Right_home_side",
+  "57._Let's_work_on_stories",
+  "58._Create_post_form",
+  "59._Responsive_home_advanced_tricks_1",
+  "60._Responsive_home_advanced_tricks_2",
+  "61._Authentification_middlware",
+  "62._Activate_account_part_1",
+  "63._Activate_account_part_2",
+  "64._Activate_Account_and_fix_asecurity_risk",
+  "65._re-Send_verification_code",
+  "66._Logout",
+  "67._Reset_password_part_1",
+  "68._Reset_password_part_2",
+  "69._Reset_password_part_3",
+  "70._Reset_password_part_4",
+  "71._Find_user",
+  "72._Send_reset_code_email",
+  "73._Validate_reset_code_email",
+  "74._Change_password",
 ];
 
 const path = (i) =>
@@ -68,11 +68,11 @@ let cur_path;
 let next_path;
 let cur_lec;
 
-let command1 = () => `cd \\"${cur_path}\\";git add .`;
-let commit_message = () => `${cur_lec}`.replace(/\s+/g, "_");
+let command1 = () => `cd ${cur_path};git add .`;
+let commit_message = () => `${cur_lec}`;
 let command2 = () =>
-  `cd \\"${cur_path}\\";git commit -m \\"${commit_message()}\\"`;
-let command3 = () => `cp -r \\"${cur_path}\\.git\\" \\"${next_path}\\"`;
+  `cd ${cur_path};git commit -m ${commit_message()}`;
+let command3 = () => `cp -r ${cur_path}\\.git ${next_path}`;
 
 let command1_p = () => `powershell.exe -Command ${command1()};`;
 let command2_p = () => `powershell.exe -Command ${command2()};`;
@@ -89,7 +89,6 @@ let cb = (error, stdout, stderr) => {
 for (let i = 0; i < paths.length; i++) {
   cur_lec = paths[i];
   cur_path = path(i);
-  next_path = path(i);
   if (i < paths.length - 1) next_path = paths[i + 1];
   else break;
   if (i == 0) {
@@ -98,16 +97,10 @@ for (let i = 0; i < paths.length; i++) {
     console.log(next_path);
 
     console.log("===", command3_p(), "===");
-    let com = command3_p();
-    // execSync(com, cb);
+    let com = command1_p();
+    execSync(com, cb);
     // copyFolder(`${cur_path}\\.git`, next_path);
-    fs.copy(`\\"${cur_path}\\.git\\"`, `\\"${next_path}\\"`)
-  .then(() => {
-    console.log('Folder copied successfully!');
-  })
-  .catch(err => {
-    console.error('Error copying folder:', err);
-  });
+
   }
   // execSync(command1_p(),cb)
 }

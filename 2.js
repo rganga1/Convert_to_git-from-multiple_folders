@@ -36,8 +36,8 @@ for (let i = 0; i < 1; i++) {
   console.log("i,keys[i]", i, keys[i]);
   console.log("=====================");
   // let command1 = `cd \\"${path}\\${keys[i]}\\";git add .`;
-  // let command1 = `cd \"${path}\";git add .`; //single backslash causes error
-  let command1 = `cd \\"${path}\\";git add .`;
+  // let command1 = `cd \"${path}\";git add .`; //single backslash causes error when spaces present
+  let command1 = `cd \\"${path}\\";ls`;
   let commit_message = `${keys[i].slice(0, 3)}_L${values[i]}`;
   let command2 = `cd ${path}\\${keys[i]};git commit -m \"${commit_message}\"`;
   let command3 = `cp -r ${path}\\${keys[i]}\\.git ${path}\\${keys[i + 1]}`;

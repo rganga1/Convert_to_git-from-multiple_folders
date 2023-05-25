@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "fs-extra": "^11.1.1",
+    "node-powershell": "^5.0.1",
+    "powershell": "^2.3.2"
+  }
+}
